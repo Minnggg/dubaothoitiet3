@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A8EFF8"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edseach"
+        android:layout_width="246dp"
+        android:layout_height="51dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="City,State"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnsearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:text="OK"
+        app:layout_constraintLeft_toRightOf="@id/edseach"
+        app:layout_constraintTop_toTopOf="@id/edseach" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="362dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:text="Tên thành phố"
+        android:textSize="24dp"
+        app:layout_constraintLeft_toLeftOf="@id/edseach"
+        app:layout_constraintTop_toBottomOf="@id/edseach" />
+
+    <TextView
+        android:id="@+id/tvCountry"
+        android:layout_width="362dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:text="Tên quốc gia"
+        android:textSize="24dp"
+        app:layout_constraintLeft_toLeftOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="146dp"
+        android:layout_height="118dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wind"
+        app:layout_constraintLeft_toLeftOf="@id/tvCountry"
+        app:layout_constraintTop_toBottomOf="@id/tvCountry" />
+
+    <TextView
+        android:id="@+id/tvTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="Nhiệt Độ"
+        android:textSize="28dp"
+        app:layout_constraintLeft_toLeftOf="@id/imgIcon"
+        app:layout_constraintStart_toStartOf="@+id/tvCountry"
+        app:layout_constraintTop_toBottomOf="@id/imgIcon" />
+
+    <TextView
+        android:id="@+id/tvTrangthai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Trạng thái"
+        android:textSize="28dp"
+        app:layout_constraintLeft_toLeftOf="@id/tvTemp"
+        app:layout_constraintTop_toBottomOf="@id/tvTemp" />
+
+    <ImageView
+        android:id="@+id/imghumidity"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/humidity"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTrangthai" />
+
+    <TextView
+        android:id="@+id/tvhumidity"
+        android:layout_width="48dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="58%"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/imghumidity"
+        app:layout_constraintTop_toBottomOf="@id/imghumidity" />
+
+    <ImageView
+        android:id="@+id/imgcloud"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="64dp"
+        android:src="@drawable/cloud"
+        app:layout_constraintLeft_toRightOf="@id/imghumidity"
+        app:layout_constraintTop_toTopOf="@id/imghumidity" />
+
+    <TextView
+        android:id="@+id/tvcloud"
+        android:layout_width="49dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="58%"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/imgcloud"
+        app:layout_constraintTop_toBottomOf="@id/imgcloud" />
+
+    <ImageView
+        android:id="@+id/imgwind"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="64dp"
+        android:src="@drawable/wind"
+        app:layout_constraintLeft_toRightOf="@id/imgcloud"
+        app:layout_constraintTop_toTopOf="@id/imgcloud" />
+
+    <TextView
+        android:id="@+id/tvwind"
+        android:layout_width="86dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="66dp"
+        android:gravity="center"
+        android:text="0 m/s"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/imgwind"
+        app:layout_constraintStart_toStartOf="@+id/imgwind"
+        app:layout_constraintTop_toBottomOf="@id/imgwind" />
+
+
+    <TextView
+        android:id="@+id/today"
+        android:layout_width="275dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Thời gian cập nhật: "
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/tvhumidity"
+        app:layout_constraintTop_toBottomOf="@id/tvhumidity" />
+
+    <Button
+        android:id="@+id/nextday"
+        android:layout_width="227dp"
+        android:layout_height="51dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        android:text="Các ngày tiếp theo"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/today"
+        app:layout_constraintTop_toBottomOf="@id/today" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

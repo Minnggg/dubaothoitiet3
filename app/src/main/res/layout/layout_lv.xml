@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="128dp"
+        android:text="Min"
+        android:textSize="25dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="24dp"
+        android:text="Max"
+        android:textSize="25dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ngay"
+        android:layout_width="187dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="16dp"
+        android:text="Ngay thang"
+        android:textSize="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/trangthai"
+        android:layout_width="188dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="20dp"
+        android:text="Trang thai"
+        android:textSize="23dp"
+        app:layout_constraintLeft_toLeftOf="@id/ngay"
+        app:layout_constraintTop_toBottomOf="@id/ngay" />
+
+    <ImageView
+        android:id="@+id/icon_day"
+        android:layout_width="4dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintLeft_toRightOf="@id/ngay"
+        app:layout_constraintTop_toTopOf="@id/ngay" />
+
+    <TextView
+        android:id="@+id/min"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="60dp"
+        android:text="min"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toRightOf="@id/icon_day"
+        app:layout_constraintTop_toTopOf="@id/ngay" />
+
+    <TextView
+        android:id="@+id/max"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="60dp"
+        android:text="max"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toRightOf="@id/icon_day"
+        app:layout_constraintTop_toTopOf="@id/ngay" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A8EFF8"
+    tools:context=".MainActivity2">
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/btnback"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    .
+
+
+    <TextView
+        android:id="@+id/tvThanhPho1"
+        android:layout_width="364dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="0dp"
+        android:text="Tên thành phố"
+        android:textSize="25dp"
+        app:layout_constraintLeft_toLeftOf="@id/btnback"
+        app:layout_constraintTop_toBottomOf="@id/btnback" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="409dp"
+        android:layout_height="587dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
