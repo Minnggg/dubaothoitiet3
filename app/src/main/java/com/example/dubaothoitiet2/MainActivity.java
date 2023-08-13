@@ -26,6 +26,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private EditText edseach;
+
+    private int x;
     private TextView tvThanhPho,tvQuocGia,tvNhietDo,tvTrangThai,tvNgayThang,tvDoAm,tvMay,tvGio;
     private Button btnSeach,btnNgaytiep;
     ImageView imgIcon;
