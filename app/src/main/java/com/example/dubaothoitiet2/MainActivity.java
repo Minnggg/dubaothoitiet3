@@ -64,59 +64,47 @@ public class MainActivity extends AppCompatActivity {
     public void GetCurrent(String data)
     {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-        String url = "https://api.openweathermap.org/data/2.5/weather?q="+data+"&appid=ca19fb65f9c92c53cff9954dd6222614&units=metric";
-
+        String url = "https://api.weatherapi.com/v1/current.json?key=c654813f6ac247da9b431839231208&q="+data;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
+                    //lấy api
                     JSONObject jsonObject = new JSONObject(response);
-                    String day = jsonObject.getString("dt");
-                    String name =jsonObject.getString("name");
+
+                    //lấy tên thanh pho + thời gian + tên quoc gia
+                    JSONObject jsonObjectLocation = jsonObject.getJSONObject("location");
+                    String day = jsonObjectLocation.getString("localtime");
+                    String name =jsonObjectLocation.getString("name");
                     tvThanhPho.setText("Tên thành phố : " + name  );
-
-                    long l = Long.valueOf(day);
-                    Date date = new Date(l*1000);
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss \nEEEE dd/MM/yyyy");
-                    String Day = simpleDateFormat.format(date);
-                    tvNgayThang.setText("Cập nhật lúc : "+Day);
-
-                    JSONArray jsonArrayWeather = jsonObject.getJSONArray("weather");
-                    JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
-                    String status = jsonObjectWeather.getString("main");
-                    String icon = jsonObjectWeather.getString("icon");
-                    // load ảnh vào imgIcon đang bị lỗi
-//                    Picasso.get().load("https://openweathermap.org/img/w/"+icon+".png").into(imgIcon);
-
-                    tvTrangThai.setText("Trang thái : " + status);
-
-
-
-                    JSONObject jsonObjectMain = jsonObject.getJSONObject("main");
-                    String nhietDo = jsonObjectMain.getString("temp");
-                    String doAm = jsonObjectMain.getString("humidity");
-                    Double Nhiet = Double.valueOf(nhietDo);
-
-                    tvNhietDo.setText("Nhiệt độ : "+Nhiet + "C" );
-                    tvDoAm.setText(doAm+"%");
-
-
-
-
-
-                    JSONObject jsonObjectMay = jsonObject.getJSONObject("clouds");
-                    String may = jsonObjectMay.getString("all");
-                    tvMay.setText(may+"%");
-
-
-                    JSONObject jsonObjectSys = jsonObject.getJSONObject("sys");
-                    String quocgia = jsonObjectSys.getString("country");
+                    tvNgayThang.setText("Cập nhật lúc : "+day);
+                    String quocgia = jsonObjectLocation.getString("country");
                     tvQuocGia.setText("Tên quốc gia : "+quocgia);
 
+                    // load ảnh vào imgIcon và cài đặt trạng thái
 
-                    JSONObject jsonObjectGio = jsonObject.getJSONObject("wind");
-                    String tocdo = jsonObjectGio.getString("speed");
-                    tvGio.setText(tocdo+"m/s");
+                    JSONObject jsonObjectCurrent = jsonObject.getJSONObject("current");
+                    JSONObject jsonObjectCodition = jsonObjectCurrent.getJSONObject("condition");
+                    String status = jsonObjectCodition.getString("text");
+                    String icon = jsonObjectCodition.getString("icon");
+                    Picasso.get().load("https:"+icon).into(imgIcon);
+                    tvTrangThai.setText(status);
+
+                    //set nhiệt độ
+                    String Nhiet = jsonObjectCurrent.getString("temp_c");
+                    tvNhietDo.setText("Nhiệt độ : "+Nhiet + " ℃ " );
+
+
+                    // cài đặt hơi nước,mây,gió
+
+                    String doAm =jsonObjectCurrent.getString("humidity");
+                    tvDoAm.setText(doAm+"%");
+                    String may = jsonObjectCurrent.getString("cloud");
+                    tvMay.setText(may+"%");
+                    String tocdo = jsonObjectCurrent.getString("wind_mph");
+                    tvGio.setText(tocdo+" m/s");
+
+
 
 
                 } catch (JSONException e) {

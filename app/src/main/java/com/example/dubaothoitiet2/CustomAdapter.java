@@ -46,20 +46,19 @@ public class CustomAdapter extends BaseAdapter {
         ThoiTiet thoiTiet = arr.get(i);
 
         TextView txtDay = view.findViewById(R.id.ngay);
-        TextView txtStatus = view.findViewById(R.id.trangthai);
+       // TextView txtStatus = view.findViewById(R.id.trangthai);
         ImageView imgIcon = view.findViewById(R.id.icon_day);
         TextView txtmin= view.findViewById(R.id.min);
         TextView txtmax= view.findViewById(R.id.max);
 
         txtDay.setText(thoiTiet.Day);
-        txtStatus.setText(thoiTiet.Status);
+     //   txtStatus.setText(thoiTiet.Status);
         txtmin.setText(thoiTiet.Mintemp+"°C");
         txtmax.setText(thoiTiet.Maxtemp+"°C");
 
 
         // lay du lieu tu picasso
-
-//        Picasso.
+        Picasso.get().load("https:"+thoiTiet.Img).into(imgIcon);
 
         return view;
     }

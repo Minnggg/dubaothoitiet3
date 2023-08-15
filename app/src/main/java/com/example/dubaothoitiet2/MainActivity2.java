@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,43 +63,42 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void Get7DayData(String data) {
-        String url = "https://api.openweathermap.org/data/2.5/forecast?q="+data+"&units=metric&cnt=7&appid=ca19fb65f9c92c53cff9954dd6222614";
+        //https://api.weatherapi.com/v1/forecast.json?key=c654813f6ac247da9b431839231208&q=Hanoi&days=7
+        String url = "https://api.weatherapi.com/v1/forecast.json?key=c654813f6ac247da9b431839231208&q="+data+"&days=7";
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity2.this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
+                    //lấy api
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONObject jsonObjectCity = jsonObject.getJSONObject("city");
-                    String name = jsonObjectCity.getString("name");
+
+                    // set tên thanh phố
+                    JSONObject jsonObjectLocation = jsonObject.getJSONObject("location");
+                    String name =jsonObjectLocation.getString("name");
                     tvThanhPho.setText(name);
 
+                    //lấy các ngày
 
-                    JSONArray jsonArrayList = jsonObject.getJSONArray("list");
+                    JSONObject jsonObjectForecast = jsonObject.getJSONObject("forecast");
+                    JSONArray jsonArrayList = jsonObjectForecast.getJSONArray("forecastday");
                     for(int i=0;i<jsonArrayList.length();i++)
                     {
+                        // set ngày
                         JSONObject jsonObjectList = jsonArrayList.getJSONObject(i);
-                        String ngay = jsonObjectList.getString("dt");
-                        long l = Long.valueOf(ngay);
-                        Date date = new Date(l*1000);
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("  EEEE\ndd/MM/yyyy");
-                        String Day = simpleDateFormat.format(date);
+                        String Day = jsonObjectList.getString("date");
 
-                        JSONObject jsonObjectNhietdo = jsonObjectList.getJSONObject("main");
-                        String min = jsonObjectNhietdo.getString("temp_min");
-                        String max = jsonObjectNhietdo.getString("temp_max");
-                        Double a = Double.valueOf(min);
-                        String NhietDoMin = String.valueOf(a.intValue());
-                        a = Double.valueOf(max);
-                        String NhietDomax = String.valueOf(a.intValue());
+                        // lấy nhiệt min max
+                        JSONObject jsonObjectDay = jsonObjectList.getJSONObject("day");
+                        String NhietDoMin = jsonObjectDay.getString("mintemp_c");
+                        String NhietDomax = jsonObjectDay.getString("maxtemp_c");
+                        //lấy icon + status
+                        JSONObject jsonObjectCodition = jsonObjectDay.getJSONObject("condition");
+                        String icon = jsonObjectCodition.getString("icon");
+                        String status ="";
 
-                        JSONArray jsonArrayWeather = jsonObjectList.getJSONArray("weather");
-                        JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
-                        String status = jsonObjectWeather.getString("description");
-                        String icon = jsonObjectWeather.getString("icon");
-
+                        // add vào mảng dự báo thời tiết
                         arraThoiTiet.add(new ThoiTiet(Day,status,icon,NhietDoMin,NhietDomax));
-
                     }
                     adapter.notifyDataSetChanged();
 

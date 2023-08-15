@@ -7,20 +7,22 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginRight="128dp"
+        android:id="@+id/textView2"
+        android:layout_width="48dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="112dp"
         android:text="Min"
         android:textSize="25dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginRight="112dp"
         android:text="Max"
         android:textSize="25dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,55 +30,46 @@
 
     <TextView
         android:id="@+id/ngay"
-        android:layout_width="187dp"
-        android:layout_height="60dp"
+        android:layout_width="134dp"
+        android:layout_height="68dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:text="Ngay thang"
         android:textSize="25dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/trangthai"
-        android:layout_width="188dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="20dp"
-        android:text="Trang thai"
-        android:textSize="23dp"
-        app:layout_constraintLeft_toLeftOf="@id/ngay"
-        app:layout_constraintTop_toBottomOf="@id/ngay" />
-
     <ImageView
         android:id="@+id/icon_day"
-        android:layout_width="4dp"
-        android:layout_height="34dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="61dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintLeft_toRightOf="@id/ngay"
         app:layout_constraintTop_toTopOf="@id/ngay" />
 
     <TextView
         android:id="@+id/min"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="min"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintLeft_toRightOf="@id/icon_day"
-        app:layout_constraintTop_toTopOf="@id/ngay" />
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/max"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginLeft="108dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="max"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintLeft_toRightOf="@id/icon_day"
-        app:layout_constraintTop_toTopOf="@id/ngay" />
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
